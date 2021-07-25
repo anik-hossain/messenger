@@ -1,9 +1,19 @@
-// Dependencies
+/**
+ * Title: Messenger
+ * Description: Messenger app with nodeJs
+ * Author: Anik Hossain || Inspired by Learn With Sumit
+ * Date: 7/25/2021
+ */
+
+// External Dependencies
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+
+// Internal Dependencies
+const { errorHandler, notFound } = require('./middlewares/common/errorHandler');
 
 // Application Setup
 const app = express();
@@ -35,9 +45,15 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Routing setup
 
-// Error Handling
+/** **********Error Handling********** */
+
+// Not found
+app.use(notFound);
+
+// Common error handler
+app.use(errorHandler);
 
 // Run the applocatin
 app.listen(process.env.PORT, () => {
-    console.log('Application started on port 3000');
+    console.log(`Application started on port ${process.env.PORT}`);
 });
