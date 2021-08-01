@@ -1,0 +1,67 @@
+<%- include('./partials/header.ejs')%>
+
+  <div id="chat-container">
+    <div id="search-container">
+      <input type="text" placeholder="Search" />
+    </div>
+    <div id="conversation-list">
+      <div class="conversation active">
+        <img src="./assets/images/user.png" alt="User 1" />
+        <div class="title-text">User 1</div>
+        <di class="created-date"> Aug 5</di>
+        <div class="conversation-message">This is a message</div>
+      </div>
+      <div class="conversation">
+        <img src="./assets/images/user.png" alt="User 2" />
+        <div class="title-text">User 2</div>
+        <di class="created-date"> Aug 5 </di>
+        <div class="conversation-message">This is a message</div>
+      </div>
+    </div>
+    <div id="new-message">
+      <a href="#">+</a>
+    </div>
+    <div id="chat-title">
+      <span>User</span>
+      <i class="fa fa-trash" aria-hidden="true"></i>
+    </div>
+    <div id="chat-message-list">
+      <div class="message-row other-message">
+        <div class="message-content">
+          <img src="./assets/images/user.png" alt="User" />
+          <div class="message-text">:)</div>
+          <div class="message-time">Aug 5</div>
+        </div>
+      </div>
+      <div class="message-row you-message">
+        <div class="message-content">
+          <div class="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, aperiam?</div>
+          <div class="message-time">Aug 5</div>
+        </div>
+      </div>
+    </div>
+    <div id="chat-form">
+      <i class="fa fa-paperclip" aria-hidden="true"></i>
+      <input type="text" placeholder="Type a message" />
+    </div>
+  </div>
+
+  <div class="modal-wrapper">
+    <div class="modal">
+      <a href="#" class="modal-close">+</a>
+      <div class="modal-title">
+        <h2>Create New Conversation</h2>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="text" placeholder="Name" />
+          <input type="text" placeholder="Username" />
+          <input type="button" value="Submit" />
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="./assets/js/toastify.js"></script>
+  </body>
+
+  </html>

@@ -1,0 +1,79 @@
+@media only screen and (max-width: 1000px) {
+    #chat-container {
+        width: auto;
+        min-width: 90%;
+        height: 88vh;
+        grid:
+            'search-container chat-title' 71px
+            'conversation-list chat-message-list' 1fr
+            'new-message-container chat-form' 78px
+            /70px 1fr;
+    }
+
+    .title-text,
+    .created-date,
+    .conversation-message {
+        display: none;
+    }
+
+    #search-container {
+        justify-content: center;
+        padding: 0;
+    }
+
+    #search-container input {
+        width: 0px;
+        padding-right: 0px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #login-container {
+        min-width: 90%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #login-container {
+        width: 80%;
+        height: 80vh;
+        grid-template-areas:
+            'branding'
+            'login-form';
+    }
+
+    #left-column {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .manageUser-container {
+        width: auto;
+        min-width: 90%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .manageUser-container {
+        width: 95%;
+        min-width: 70%;
+        padding: 1rem;
+        height: 87vh;
+    }
+
+    #users-table tbody td:nth-child(2),
+    #users-table thead th:nth-child(2) {
+        display: none;
+    }
+    #users-table thead th:last-of-type,
+    #users-table tbody td:last-of-type {
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #modal {
+        width: 390px;
+    }
+}
