@@ -1,20 +1,16 @@
 <%- include('./partials/header.ejs')%>
-  <div id="login-container">
     <div class="container">
-      <div id="branding">
-        <h1>Login</h1>
-      </div>
-      <div id="login-form">
-        <form method="post" action="/">
-          <input type="text" name="username" placeholder="enter mobile or email" value="" />
-          <p class="error show">Error message here</p>
-          <input type="password" name="password" placeholder="enter password" />
-          <input type="submit" value="Login" />
-        </form>
-      </div>
+        <div class="display-flex">
+            <div class="login">
+                <form action="">
+                    <input type="email" placeholder="Enter Your Email Adddress">
+                    <input type="password" placeholder="Enter Your Password">
+                    <button>Login</button>
+                </form>
+                <span>Don't have an account? <a href="signup">Create Here</a></span>
+            </div>
+        </div>
     </div>
-  </div>
-  <script src="./assets/js/toastify.js"></script>
-  </body>
+    </body>
 
-  </html>
+    </html>

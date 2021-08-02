@@ -1,67 +1,33 @@
 <%- include('./partials/header.ejs')%>
-  <div class="manageUser-container">
-    <div id="title">
-      <h2>Manage Users</h2>
-    </div>
+    <section class="users">
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>roll</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="id">1</td>
+                    <td>Mr. Twist</td>
+                    <td>mrtwist@gmail.com</td>
+                    <td class="roll">user</td>
+                    <td class="delete"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                </tr>
+                <tr>
+                    <td class="id">1</td>
+                    <td>Mr. Twist</td>
+                    <td>mrtwist@gmail.com</td>
+                    <td class="roll">user</td>
+                    <td class="delete"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    </body>
 
-    <div class="new-message-container new-user">
-      <a href="#" onclick="openModal()">+</a>
-    </div>
-
-    <div id="users-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Manage</th>
-          </tr>
-        </thead>
-        <tbody id="users-table">
-          <tr id="">
-            <td class="name">
-              <img src="/assets/images/user.png" />
-              <span>User 1</span>
-            </td>
-            <td>email@email.com</td>
-            <td class="manage">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="modal-wrapper" id="add-user-modal">
-    <div class="modal">
-      <a href="#" onclick="closeModal()" class="modal-close">+</a>
-      <div class="modal-title">
-        <h2>Create New User</h2>
-      </div>
-      <div class="modal-body">
-        <form id="add-user-form">
-          <input type="text" placeholder="enter name" name="name" />
-          <p class="error show">This is error</p>
-          <input type="text" placeholder="enter email" name="email" />
-          <input type="text" placeholder="enter mobile" name="mobile" />
-          <input type="password" placeholder="enter password" name="password" />
-          <input type="file" name="avatar" />
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    </div>
-  </div>
-  <script>
-    const modal = document.querySelector("#add-user-modal");
-    function closeModal() {
-      modal.style.display = "none";
-    }
-    function openModal() {
-      modal.style.display = "block";
-    }
-  </script>
-  <script src="./assets/js/toastify.js"></script>
-  </body>
-
-  </html>
+    </html>

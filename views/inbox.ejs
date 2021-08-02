@@ -1,67 +1,83 @@
 <%- include('./partials/header.ejs')%>
-
-  <div id="chat-container">
-    <div id="search-container">
-      <input type="text" placeholder="Search" />
-    </div>
-    <div id="conversation-list">
-      <div class="conversation active">
-        <img src="./assets/images/user.png" alt="User 1" />
-        <div class="title-text">User 1</div>
-        <di class="created-date"> Aug 5</di>
-        <div class="conversation-message">This is a message</div>
-      </div>
-      <div class="conversation">
-        <img src="./assets/images/user.png" alt="User 2" />
-        <div class="title-text">User 2</div>
-        <di class="created-date"> Aug 5 </di>
-        <div class="conversation-message">This is a message</div>
-      </div>
-    </div>
-    <div id="new-message">
-      <a href="#">+</a>
-    </div>
-    <div id="chat-title">
-      <span>User</span>
-      <i class="fa fa-trash" aria-hidden="true"></i>
-    </div>
-    <div id="chat-message-list">
-      <div class="message-row other-message">
-        <div class="message-content">
-          <img src="./assets/images/user.png" alt="User" />
-          <div class="message-text">:)</div>
-          <div class="message-time">Aug 5</div>
+    <section class="messenger">
+        <div class="contacts">
+            <ul>
+                <li>
+                    <img src="./assets/img/user.png" alt="">
+                    <div class="meta">
+                        <span class="name">Mr. Twist</span>
+                        <span class="email">mr.twist@email.com</span>
+                    </div>
+                </li>
+                <li>
+                    <img src="./assets/img/user.png" alt="">
+                    <div class="meta">
+                        <span class="name">Mrs Twists</span>
+                        <span class="email">mr.twist@email.com</span>
+                    </div>
+                </li>
+            </ul>
         </div>
-      </div>
-      <div class="message-row you-message">
-        <div class="message-content">
-          <div class="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, aperiam?</div>
-          <div class="message-time">Aug 5</div>
+        <div class="conversation">
+            <div class="top">
+                <sapn class="name">Mr. Twist</sapn>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </div>
+            <div class="body">
+                <div class="incoming-message">
+                    <img src="./assets/img/user.png" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dolore dicta delectus saepe sit
+                        dolorem blanditiis reprehenderit consequatur! Aut accusamus dolorem sint accusantium minus
+                        consequuntur placeat dignissimos fugiat fuga, obcaecati vel deserunt iure ea incidunt odio
+                        dolor, inventore cumque. Provident blanditiis commodi molestias dolor, dignissimos inventore sit
+                        eius? Quibusdam laudantium aliquid, molestiae culpa suscipit eius esse hic eligendi, similique
+                        nobis quis illo? Illum, beatae. Possimus fugit, laborum cum animi reprehenderit nulla nostrum
+                        maxime obcaecati excepturi amet facilis optio ratione pariatur iusto quis at nihil cumque
+                        exercitationem! Repudiandae tenetur dolores nostrum itaque, exercitationem, corrupti illum
+                        cupiditate molestiae illo aliquam at explicabo.</p>
+                    <span class="time">7.45 pm | aug 2</span>
+                </div>
+                <div class="outgoing-message">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, nemo.</p>
+                    <span class="time">7.45 pm | aug 2</span>
+                </div>
+                <div class="incoming-message">
+                    <img src="./assets/img/user.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, nemo.</p>
+                    <span class="time">7.45 pm | aug 2</span>
+                </div>
+                <div class="outgoing-message">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, nemo.</p>
+                    <span class="time">7.45 pm | aug 2</span>
+                </div>
+                <div class="incoming-message">
+                    <img src="./assets/img/user.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, nemo.</p>
+                    <span class="time">7.45 pm | aug 2</span>
+                </div>
+                <div class="outgoing-message">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, nemo.</p>
+                    <span class="time">7.45 pm | aug 2</span>
+                </div>
+                <div class="incoming-message">
+                    <img src="./assets/img/user.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, nemo.</p>
+                    <span class="time">7.45 pm | aug 2</span>
+                </div>
+                <div class="outgoing-message">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, nemo.</p>
+                    <span class="time">7.45 pm | aug 2</span>
+                </div>
+            </div>
+            <div class="bottom">
+                <form action="">
+                    <i class="fa fa-paperclip" aria-hidden="true"></i>
+                    <input type="text" class="input-conversation" placeholder="Message...">
+                    <button class="send">Send</button>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>
-    <div id="chat-form">
-      <i class="fa fa-paperclip" aria-hidden="true"></i>
-      <input type="text" placeholder="Type a message" />
-    </div>
-  </div>
+    </section>
+    </body>
 
-  <div class="modal-wrapper">
-    <div class="modal">
-      <a href="#" class="modal-close">+</a>
-      <div class="modal-title">
-        <h2>Create New Conversation</h2>
-      </div>
-      <div class="modal-body">
-        <form>
-          <input type="text" placeholder="Name" />
-          <input type="text" placeholder="Username" />
-          <input type="button" value="Submit" />
-        </form>
-      </div>
-    </div>
-  </div>
-  <script src="./assets/js/toastify.js"></script>
-  </body>
-
-  </html>
+    </html>
