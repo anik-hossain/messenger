@@ -118,7 +118,9 @@ p.success {
 .signup button {
     width: 320px;
 }
-
+.login button {
+    margin-top: 10px;
+}
 .login span,
 .signup span {
     display: block;

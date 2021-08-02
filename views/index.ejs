@@ -2,10 +2,21 @@
     <div class="container">
         <div class="display-flex">
             <div class="login">
-                <form action="">
-                    <input type="email" placeholder="Enter Your Email Adddress">
-                    <input type="password" placeholder="Enter Your Password">
-                    <button>Login</button>
+                <form action="/" method="POST">
+                    <input type="email" placeholder="Enter Your Email or Phone Adddress" value="<%= data.username %>"
+                        name="username">
+                    <% if(errors.username){ %>
+                        <p class="error">
+                            <%= errors.username.msg%>
+                        </p>
+                        <% } %>
+                            <input type="password" placeholder="Enter Your Password" name="password">
+                            <% if(errors.password){ %>
+                                <p class="error">
+                                    <%= errors.password.msg%>
+                                </p>
+                                <% } %>
+                                    <button>Login</button>
                 </form>
                 <span>Don't have an account? <a href="signup">Create Here</a></span>
             </div>

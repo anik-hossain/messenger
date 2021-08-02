@@ -11,7 +11,6 @@ async function getUsers(req, res, next) {
     try {
         const users = await User.find();
         res.render('users', {
-            title: 'Users',
             users,
         });
     } catch (err) {

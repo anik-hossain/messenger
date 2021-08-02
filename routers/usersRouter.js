@@ -7,6 +7,7 @@ const {
     addUser,
     deleteUser,
 } = require('../controllers/usersController');
+const htmlHeaders = require('../middlewares/common/htmlHeaders');
 
 const avatar = require('../middlewares/user/avatar');
 const {
@@ -17,10 +18,17 @@ const {
 const router = express.Router();
 
 // Login Page
-router.get('/', getUsers);
+router.get('/', htmlHeaders('Users'), getUsers);
 
 // Add user
-router.post('/', avatar, validators, validationHandler, addUser);
+router.post(
+    '/',
+    htmlHeaders('Signup'),
+    avatar,
+    validators,
+    validationHandler,
+    addUser
+);
 
 // Delete User
 router.delete('/:id', deleteUser);
