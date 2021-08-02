@@ -11,23 +11,41 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="id">1</td>
-                    <td>Mr. Twist</td>
-                    <td>mrtwist@gmail.com</td>
-                    <td class="roll">user</td>
-                    <td class="delete"><i class="fa fa-trash" aria-hidden="true"></i></td>
-                </tr>
-                <tr>
-                    <td class="id">1</td>
-                    <td>Mr. Twist</td>
-                    <td>mrtwist@gmail.com</td>
-                    <td class="roll">user</td>
-                    <td class="delete"><i class="fa fa-trash" aria-hidden="true"></i></td>
-                </tr>
+                <% users.forEach(function(user){ %>
+                    <tr id="<%= user._id %>">
+                        <td class="id">1</td>
+                        <td>
+                            <%= user.name %>
+                        </td>
+                        <td>
+                            <%= user.email %>
+                        </td>
+                        <td class="roll">
+                            <%= user.role %>
+                        </td>
+                        <td class="delete" onclick="deleteUser('<%= user._id %>')"><i class="fa fa-trash"
+                                aria-hidden="true"></i></td>
+                    </tr>
+                    <%}); %>
             </tbody>
         </table>
     </section>
+
+    <script>
+        async function deleteUser(id) {
+            let response = await fetch(`/users/${id}`, {
+                method: 'DELETE'
+            });
+
+            let result = await response.json();
+
+            if (result.errors) {
+                console.log(result.errors);
+            } else {
+                document.getElementById(id).remove()
+            }
+        }
+    </script>
     </body>
 
     </html>

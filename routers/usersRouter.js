@@ -2,7 +2,12 @@
 const express = require('express');
 
 // Internal Dependencies
-const { getUsers, addUser } = require('../controllers/usersController');
+const {
+    getUsers,
+    addUser,
+    deleteUser,
+} = require('../controllers/usersController');
+
 const avatar = require('../middlewares/user/avatar');
 const {
     validators,
@@ -16,5 +21,8 @@ router.get('/', getUsers);
 
 // Add user
 router.post('/', avatar, validators, validationHandler, addUser);
+
+// Delete User
+router.delete('/:id', deleteUser);
 
 module.exports = router;
