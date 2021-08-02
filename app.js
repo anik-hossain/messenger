@@ -48,7 +48,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Routing setup
 app.use('/', loginRouter);
-app.use('/users', usersRouter);
+app.use('/signup', usersRouter);
 app.use('/inbox', inboxRouter);
 
 /** **********Error Handling********** */

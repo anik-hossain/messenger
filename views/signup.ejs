@@ -2,12 +2,15 @@
     <div class="container">
         <div class="display-flex">
             <div class="signup">
-                <form action="">
-                    <input type="text" placeholder="Enter Your Name">
-                    <input type="email" placeholder="Enter Your Email Address">
-                    <input type="text" placeholder="Enter Your Phone Number">
-                    <input type="password" placeholder="Enter Your Password">
-                    <input type="password" placeholder="Confirm Your Password">
+                <form action="/users" method="post" enctype="multipart/form-data" id="add-user">
+                    <input type="text" placeholder="Enter Your Name" name="name">
+                    <p class="error name-error"></p>
+                    <input type="email" placeholder="Enter Your Email Address" name="email">
+                    <p class="error email-error"></p>
+                    <input type="text" placeholder="Enter Your Phone Number" name="mobile">
+                    <p class="error mobile-error"></p>
+                    <input type="password" placeholder="Enter Your Password" name="password">
+                    <p class="error password-error"></p>
                     <div class="gender">
                         <label for="gender">Gender: </label>
                         Male
@@ -15,12 +18,55 @@
                         Female
                         <input type="radio" name="gender" value="female">
                     </div>
+                    <p class="error gender-error"></p>
+                    <input type="file" name="avatar">
+                    <p class="error avatar-error"></p>
+                    <p class="error common-error"></p>
                     <button>Sign UP</button>
+                    <p class="success"></p>
                 </form>
                 <span>Already account? <a href="/">Login Here</a></span>
             </div>
         </div>
     </div>
+    <script>
+        const form = document.querySelector('#add-user')
+
+        form.onsubmit = async function (e) {
+            e.preventDefault()
+
+            const errorMsg = document.querySelectorAll(`p.error`);
+            errorMsg.forEach(el => {
+                el.style.display = 'none'
+            });
+
+            document.querySelector('p.success').style.display = 'none';
+
+            const formData = new FormData(form)
+
+            // Send request
+            let response = await fetch('/signup', {
+                method: 'POST',
+                body: formData
+            })
+
+            // Get response
+            let result = await response.json()
+
+            // Error and response handle
+            if (result.errors) {
+                Object.keys(result.errors).forEach((fieldName) => {
+                    const errorPlaceholder = document.querySelector(`.${fieldName}-error`);
+                    errorPlaceholder.textContent = result.errors[fieldName].msg;
+                    errorPlaceholder.style.display = "block";
+                });
+            } else {
+                document.querySelector('.success').textContent = 'Acount Createed Successfully now please login to application'
+                document.querySelector('p.error').style.display = 'none';
+                document.querySelector('p.success').style.display = 'block';
+            }
+        }
+    </script>
     </body>
 
     </html>

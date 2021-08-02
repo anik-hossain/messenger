@@ -53,7 +53,9 @@ button {
 
 input[type='text'],
 input[type='email'],
-input[type='password'] {
+input[type='password'],
+input[type='file'],
+.signup .gender {
     background-color: var(--light);
     width: 320px;
     height: 40px;
@@ -63,7 +65,9 @@ input[type='password'] {
     display: block;
     margin: 10px;
 }
-
+input[type='file'] {
+    border-bottom: 0;
+}
 input[type='radio'] {
     display: inline-block;
     margin-bottom: 10px;
@@ -85,6 +89,17 @@ input[type='radio'] {
 i.fa {
     cursor: pointer;
 }
+p.error {
+    color: #ff0000;
+    font-size: 12px;
+    margin-left: 10px;
+}
+p.success {
+    color: green;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
 
 /* Sign Up  And Login*/
 .login,
@@ -92,10 +107,7 @@ i.fa {
     background-color: var(--light);
     border-radius: 5px;
     padding: 10px;
-}
-
-.signup .gender {
-    margin: 15px 10px;
+    width: 360px;
 }
 
 .signup label {
