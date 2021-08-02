@@ -11,11 +11,11 @@
 	$ npm start
 
 
-  9. Now enter the following address to your browser:
+  4. Now enter the following address to your browser:
 
 	https://127.0.0.1:3000
 
-  10. ##### Building for Production: 
+  5. ##### Building for Production: 
       If you want to run the project and make the build in the production mode then run the following command in the root directory, otherwise the project will continue to run in the development mode.
 
 	$ npm run prod
