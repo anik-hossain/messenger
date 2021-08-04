@@ -115,6 +115,52 @@ p.success {
     bottom: 4.5%;
     right: 2.1%;
 }
+.modal {
+    background-color: var(--dark);
+    color: var(--light);
+    text-align: center;
+    width: 420px;
+    height: 200px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid var(--primary);
+    padding: 10px;
+    position: absolute;
+    top: 25%;
+    left: 36%;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal .title {
+    margin-bottom: 30px;
+}
+.modal .title h1 {
+    font-size: 24px;
+}
+
+.modal .body input {
+    margin: 10px auto;
+}
+
+.new-conversation {
+    background-color: var(--primary);
+    color: var(--light);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 8px;
+    z-index: 9999;
+}
 
 /* Sign Up  And Login*/
 .login,
@@ -377,4 +423,38 @@ p.success {
 .users td.roll {
     font-weight: 700;
     text-transform: capitalize;
+}
+
+/* Search Users */
+.user-list {
+    background-color: var(--dark);
+    color: var(--light);
+    width: 212px;
+    padding: 5px;
+    border: 2px solid var(--primary);
+    position: absolute;
+    top: 50%;
+    left: 43%;
+    display: none;
+}
+
+/* .user-list.active {
+    display: block;
+} */
+
+.user-list ul li {
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    width: 200px;
+    padding: 4px;
+}
+.user-list ul li img {
+    width: 30px;
+    height: 30px;
+}
+.user-list ul li span.name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 5px;
 }
