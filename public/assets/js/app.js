@@ -3,9 +3,14 @@ function $(selector) {
 }
 
 // Modal
-if ($('.new-conversation')) {
-    $('.new-conversation').addEventListener('click', () => {
+if ($('#new-conversation')) {
+    $('#new-conversation').addEventListener('click', () => {
         $('.modal').classList.toggle('active');
+    });
+    $('.messenger, .conversation').addEventListener('click', (e) => {
+        if (e.target.id != 'new-conversation') {
+            $('.modal').classList.remove('active');
+        }
     });
 }
 

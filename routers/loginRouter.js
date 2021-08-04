@@ -21,7 +21,7 @@ const router = express.Router();
 router.get('/', htmlHeaders('Login'), authOrNot, getLogin);
 
 // Signup
-router.get('/signup', htmlHeaders('Signup'), getSignup);
+router.get('/signup', htmlHeaders('Signup'), authOrNot, getSignup);
 
 // Login
 router.post('/', htmlHeaders('Login'), validators, validationHandler, login);
