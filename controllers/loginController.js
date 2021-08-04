@@ -22,7 +22,6 @@ async function login(req, res, next) {
         });
 
         if (user && user._id) {
-            console.log('jghg');
             const isValidPassword = await bcrypt.compare(
                 req.body.password,
                 user.password
@@ -53,12 +52,10 @@ async function login(req, res, next) {
 
                 res.render('inbox');
             } else {
-                console.log(1);
-                throw createError('Login Filed :-(');
+                throw createError('User or password not matched');
             }
         } else {
-            console.log(2);
-            throw createError('Login Filed :-(');
+            throw createError('User or password not matched');
         }
     } catch (err) {
         res.render('index', {
@@ -74,8 +71,15 @@ async function login(req, res, next) {
     }
 }
 
+// Logout
+function logout(req, res) {
+    res.clearCookie(process.env.COOKIE_NAME);
+    res.send('Logged Out');
+}
+
 module.exports = {
     getLogin,
     getSignup,
     login,
+    logout,
 };

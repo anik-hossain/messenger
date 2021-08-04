@@ -50,7 +50,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use('/', loginRouter);
 app.use('/signup', usersRouter);
 app.use('/users', usersRouter);
-app.use('/inbox', inboxRouter);
+app.use('/messeges', inboxRouter);
 
 /** **********Error Handling********** */
 

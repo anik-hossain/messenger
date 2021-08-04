@@ -16,7 +16,12 @@
                                     <%= errors.password.msg%>
                                 </p>
                                 <% } %>
-                                    <button>Login</button>
+                                    <% if (errors.common) { %>
+                                        <p class="error show">
+                                            <%= errors.common.msg %>
+                                        </p>
+                                        <% } %>
+                                            <button>Login</button>
                 </form>
                 <span>Don't have an account? <a href="signup">Create Here</a></span>
             </div>
