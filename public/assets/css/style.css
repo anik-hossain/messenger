@@ -429,7 +429,6 @@ p.success {
 .user-list {
     background-color: var(--dark);
     color: var(--light);
-    width: 212px;
     padding: 5px;
     border: 2px solid var(--primary);
     position: absolute;
@@ -438,17 +437,20 @@ p.success {
     display: none;
 }
 
-/* .user-list.active {
-    display: block;
-} */
-
 .user-list ul li {
     background-color: var(--primary);
     display: flex;
     align-items: center;
     width: 200px;
+    margin-bottom: 5px;
     padding: 4px;
+    cursor: pointer;
 }
+
+.user-list ul li:last-child {
+    margin-bottom: 0;
+}
+
 .user-list ul li img {
     width: 30px;
     height: 30px;

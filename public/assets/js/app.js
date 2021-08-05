@@ -10,6 +10,7 @@ if ($('#new-conversation')) {
     $('.messenger, .conversation').addEventListener('click', (e) => {
         if (e.target.id != 'new-conversation') {
             $('.modal').classList.remove('active');
+            $('.user-list').style.display = 'none';
         }
     });
 }
@@ -68,7 +69,7 @@ async function search_users() {
             result.forEach((user) => {
                 const avatar = user.avatar
                     ? './uploads/avatars/' + user.avatar
-                    : './images/default_user.png';
+                    : './img/default_user.png';
                 generatedHtml += `<li onclick="createConversation('${user._id}', '${user.name}', '${user.avatar}')">
                 <img src="${avatar}" />
               <span class="name">${user.name}</span>
@@ -91,4 +92,104 @@ if (input) {
             typingTimer = setTimeout(search_users, duration); //user is "finished typing," send search request
         }
     });
+
+    input.addEventListener('keydown', function () {
+        clearTimeout(typingTimer);
+    });
+}
+
+// create Conversation
+async function createConversation(participant_id, name, avatar) {
+    try {
+        const response = await fetch('/messeges/conversation', {
+            method: 'POST',
+            body: JSON.stringify({
+                participant: name,
+                id: participant_id,
+                avatar: avatar != 'undefined' ? avatar : null,
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        const result = response.json();
+        if (!result.errors) {
+            // reset
+            users_placeholder.style.display = 'none';
+            input.value = name;
+            // reload the page after 1 second
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+        } else {
+            throw new Error(result.errors.common.msg);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+// get messages of a conversation
+async function getMessages(conversation_id, current_conversation_name) {
+    let response = await fetch(`/messages/id/${conversation_id}`);
+    const result = await response.json();
+
+    if (!result.errors && result.data) {
+        form.style.visibility = 'visible';
+
+        const { data, user, conversation_id } = result;
+
+        participant = data.participant;
+        current_conversation_id = conversation_id;
+
+        if (data.messages) {
+            let allMessages = '';
+
+            if (data.messages.length > 0) {
+                data.messages.forEach((message) => {
+                    let senderAvatar = message.sender.avatar
+                        ? `./uploads/avatars/${message.sender.avatar}`
+                        : './img/nophoto.png';
+                    const messageClass =
+                        message.sender.id === loggedinUserId
+                            ? 'you-message'
+                            : 'other-message';
+                    const showAvatar =
+                        message.sender.id === loggedinUserId
+                            ? ''
+                            : `<img src="${senderAvatar}" alt="${message.sender.name}" />`;
+
+                    // message attachments
+                    let attachments = '<div class="attachments">';
+
+                    if (message.attachment && message.attachment.length > 0) {
+                        message.attachment.forEach((attachment) => {
+                            attachments += `<img src="./uploads/attachments/${attachment}" /> `;
+                        });
+                    }
+
+                    attachments += '</div>';
+
+                    // final message html
+                    let messageHTML = `<div class="message-row ${messageClass}"><div class="message-content">
+                      ${showAvatar}
+                      <div class="message-text">${message.text}</div>
+                      ${attachments}
+                      <div class="message-time">${moment(
+                          message.date_time
+                      ).fromNow()}</div>
+                    </div></div>`;
+
+                    allMessages += messageHTML;
+                    messageContainer.innerHTML = allMessages;
+                });
+            } else if (data.messages.length === 0) {
+                messageContainer.innerHTML = '<div class="message-row"></div>';
+            }
+
+            chatTitleContainer.textContent = current_conversation_name;
+        }
+    } else {
+        // messagesFailureToast.showToast();
+    }
 }

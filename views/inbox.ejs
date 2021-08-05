@@ -2,20 +2,33 @@
     <section class="messenger" id="messenger">
         <div class="contacts">
             <ul>
-                <li>
-                    <img src="./assets/img/user.png" alt="">
-                    <div class="meta">
-                        <span class="name">Mr. Twist</span>
-                        <span class="email">mr.twist@email.com</span>
-                    </div>
-                </li>
-                <li>
-                    <img src="./assets/img/user.png" alt="">
-                    <div class="meta">
-                        <span class="name">Mrs Twists</span>
-                        <span class="email">mr.twist@email.com</span>
-                    </div>
-                </li>
+                <% data.forEach(function(conversation) { %>
+                    <% if(conversation.creator.id==loggedInUser.userid) { %>
+                        <li onclick="getMessages('<%= conversation._id %>', '<%= conversation.participant.name %>')">
+                            <% if (conversation.participant.avatar) { %>
+                                <img src="./uploads/avatars/<%= conversation.participant.avatar %>" alt="">
+                                <% } else { %>
+                                    <img src="./images/default_user.png" alt="">
+                                    <% } %>
+                                        <div class="meta">
+                                            <span class="name">
+                                                <%= conversation.participant.name %>
+                                            </span>
+                                            <span class="email">mr.twist@email.com</span>
+                                        </div>
+                        </li>
+                        <% } else { %>
+                            <li onclick="getMessages('<%= conversation._id %>', '<%= conversation.creator.name %>')">
+                                <% if (conversation.creator.avatar) { %>
+                                    <img src="./assets/img/user.png" alt="">
+                                    <% }%>
+                                        <div class="meta">
+                                            <%= conversation.creator.name %>Mr. Twist</span>
+                                                <span class="email">mr.twist@email.com</span>
+                                        </div>
+                            </li>
+                            <% } %>
+                                <% }); %>
             </ul>
             <div id="new-conversation" class="new-conversation">
                 <i class="fa fa-plus" aria-hidden="true"></i>
@@ -96,7 +109,7 @@
     <div class="user-list">
         <ul>
             <li>
-                <img src="/assets/images/user.png" alt="">
+                <img src="/assets/img/user.png" alt="">
                 <span class="name">Mr. Twist</span>
             </li>
         </ul>
